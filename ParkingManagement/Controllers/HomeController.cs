@@ -1,5 +1,8 @@
-﻿using System;
+﻿using ParkingManagement.Models;
+using ParkManagementSysBL;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -8,23 +11,25 @@ namespace ParkingManagement.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
-        {
-            return View();
-        }
+        IBuisnessLayer ibuisnessLayer = new BuisnessLayer();
+        public ActionResult Vechicle()
+        {            
+            Vechicle vechicle = new Vechicle()
+            {
+                lstVechicleType = ibuisnessLayer.GetVechileType().AsDataView(),
+                lstVechicleName= ibuisnessLayer.GetVechileName(0).AsDataView(),
+            };
+            DataRow dr = vechicle.lstVechicleType.Table.NewRow();
+            dr["VId"] = 0;
+            dr["VechicleType"] = "--Select--";
+            vechicle.lstVechicleType.Table.Rows.InsertAt(dr, 0);
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+            DataRow dr1 = vechicle.lstVechicleName.Table.NewRow();
+            dr1["VId"] = 0;
+            dr1["VechicleName"] = "--Select--";
+            vechicle.lstVechicleName.Table.Rows.InsertAt(dr1, 0);
 
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+            return View(vechicle);
+        }        
     }
 }

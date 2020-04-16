@@ -53,3 +53,7 @@ C:\Users\Ankit\source\repos\ParkingManagement\ParkManagementSysBL\obj\Debug\Park
 C:\Users\Ankit\source\repos\ParkingManagement\ParkManagementSysBL\obj\Debug\ParkManagementSysBL.csproj.CopyComplete
 C:\Users\Ankit\source\repos\ParkingManagement\ParkManagementSysBL\obj\Debug\ParkManagementSysBL.dll
 C:\Users\Ankit\source\repos\ParkingManagement\ParkManagementSysBL\obj\Debug\ParkManagementSysBL.pdb
+C:\Users\Ankit\source\repos\ParkingManagement\ParkManagementSysBL\obj\Debug\ParkManagementSysBL.csprojAssemblyReference.cache
+C:\Users\Ankit\source\repos\ParkingManagement\ParkManagementSysBL\bin\ParkManagementSysDAL.dll
+C:\Users\Ankit\source\repos\ParkingManagement\ParkManagementSysBL\bin\ParkManagementSysDAL.pdb
+C:\Users\Ankit\source\repos\ParkingManagement\ParkManagementSysBL\bin\ParkManagementSysDAL.dll.config

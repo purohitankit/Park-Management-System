@@ -74,3 +74,9 @@ C:\Users\Ankit\source\repos\ParkingManagement\ParkingManagement\obj\Debug\Parkin
 C:\Users\Ankit\source\repos\ParkingManagement\ParkingManagement\obj\Debug\ParkingManagement.csproj.CopyComplete
 C:\Users\Ankit\source\repos\ParkingManagement\ParkingManagement\obj\Debug\ParkingManagement.dll
 C:\Users\Ankit\source\repos\ParkingManagement\ParkingManagement\obj\Debug\ParkingManagement.pdb
+C:\Users\Ankit\source\repos\ParkingManagement\ParkingManagement\bin\ParkManagementSysBL.dll
+C:\Users\Ankit\source\repos\ParkingManagement\ParkingManagement\bin\ParkManagementSysDAL.dll
+C:\Users\Ankit\source\repos\ParkingManagement\ParkingManagement\bin\ParkManagementSysBL.pdb
+C:\Users\Ankit\source\repos\ParkingManagement\ParkingManagement\bin\ParkManagementSysBL.dll.config
+C:\Users\Ankit\source\repos\ParkingManagement\ParkingManagement\bin\ParkManagementSysDAL.pdb
+C:\Users\Ankit\source\repos\ParkingManagement\ParkingManagement\bin\ParkManagementSysDAL.dll.config

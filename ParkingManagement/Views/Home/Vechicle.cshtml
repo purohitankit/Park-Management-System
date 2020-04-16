@@ -1,0 +1,63 @@
+﻿@model ParkingManagement.Models.Vechicle
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/ParkingScripts/ParkingManagement.js"></script>
+<script>
+    $(document).ready(function () {        
+        $.ParkingMang = {};
+        $.ParkingMang.ParkingManagement = {};
+        var options = {};
+        options.GetVechileNamesURL = '@Url.Action("GetVechileNames", "Lookup")';
+        
+        var obj = new ParkingMang.ParkingManagement(options);   
+        obj.BindDataAndEvents();
+    });
+</script>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Park Management System</title>
+</head>
+<body>
+        <div>           
+            <table align="center" style="margin-top:30px">
+                <tr>
+                    <td>
+                        <h1>Parking Status :</h1> 
+                    </td>
+                    <td>
+                        Occupied Count : &nbsp; <span>@Model.VOccupiedCount</span>
+                    </td>
+                    <td>
+                        Available Count : &nbsp; <span>@Model.VAvailableCount</span>
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <table style="margin-top:50px" width="35%">
+                <tr>
+                    <td>
+                        Vechicle Type :
+                    </td>&nbsp;&nbsp;
+                    <td>
+                        @Html.DropDownListFor(m => m.VechicleType, new SelectList(Model.lstVechicleType, "VId", "VechicleType"))
+                    </td>&nbsp;&nbsp;
+                    <td>
+                        Vechicle  Name :
+                    </td>&nbsp;&nbsp;
+                    <td>
+                        @Html.DropDownListFor(m => m.VechicleName, new SelectList(Model.lstVechicleName, "VId", "VechicleName"))
+                    </td>
+                </tr>
+            </table>
+        </div>
+</body>
+</html>
