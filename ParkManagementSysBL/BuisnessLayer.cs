@@ -21,6 +21,10 @@ namespace ParkManagementSysBL
         public int AddRemoveVechicles(int VechicleId, string VechicleType, string ActionName, ref int OccpCnt, ref int AvailCnt)
         {
             return idataccesslayer.AddRemoveVechicles(VechicleId,VechicleType, ActionName,ref OccpCnt,ref AvailCnt);
-        }       
+        }      
+        public int AddVechiclesCategory(string VechicleType, string VechicleName, int SlotSize)
+        {
+            return idataccesslayer.AddVechiclesCategory(VechicleType, VechicleName, SlotSize);
+        }
     }
 }

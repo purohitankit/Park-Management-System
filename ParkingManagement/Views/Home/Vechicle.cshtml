@@ -14,6 +14,8 @@
         var options = {};
         options.GetVechileNamesURL = '@Url.Action("GetVechileNames", "Lookup")';
         options.AddRemoveVechiclesURL = '@Url.Action("AddRemoveVechicles", "Lookup")';
+        options.AddVechiclesCategoryURL = '@Url.Action("AddVechiclesCategory", "Lookup")';
+        options.VechicleURL = '@Url.Action("Vechicle", "Home")';    
         
         var obj = new ParkingMang.ParkingManagement(options);   
         obj.BindDataAndEvents();
@@ -23,22 +25,24 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Park Management System</title>
+    <title>Parking Management System</title>
 </head>
 <body>
-    <header style="text-align:center;font-size:30px">Parking Management System</header>
+    <header style="text-align:center;font-size:30px;background-color:yellow">Parking Management System</header>
         <div>           
             <table align="center" style="margin-top:70px">
                 <tr>
                     <td>
                         <h1>Parking Status :</h1> 
                     </td>
-                    <td>
+                    <td style="color:red">
                         Occupied Count : &nbsp; <span><input type="text" style="width:40px;height:25px;text-align:center;" disabled id="txtOccpCount" /> </span>
                     </td>
-                    <td>
+                    <td style="color:green">
                         Available Count : &nbsp; <span><input type="text" style="width:40px;height:25px;text-align:center;" disabled id="txtAvailCount" /></span>
-
+                    </td>
+                    <td>
+                        &nbsp;&nbsp; <label id="lblStatus"style="display:none;color:blue" >Parking Is Full</label>
                     </td>
                 </tr>
             </table>
@@ -46,17 +50,37 @@
         <div>
             <table style="margin-top:70px" width="35%">
                 <tr>
-                    <td>
+                    <td style="white-space:nowrap">
                         Vechicle Type :
                     </td>&nbsp;&nbsp;
                     <td>
                         @Html.DropDownListFor(m => m.VechicleType, new SelectList(Model.lstVechicleType, "VId", "VechicleType"))
                     </td>&nbsp;&nbsp;
-                    <td>
+                    <td style="white-space:nowrap">
                         Vechicle  Name :
                     </td>&nbsp;&nbsp;
                     <td>
                         @Html.DropDownListFor(m => m.VechicleName, new SelectList(Model.lstVechicleName, "VId", "VechicleName"))
+                    </td>
+                </tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr>
+                    <td style="white-space:nowrap;cursor:pointer" id="tdCat">
+                        Add Vechicle Category:
+                    </td>
+                    <td style="display:none" id="td1">
+                        <input type="text" id="txtVCat" value="Enter Vechicle Category" />
+                    </td>
+                    <td style="display:none" id="td2">
+                        <input type="text" id="txtVName" value="Enter Vechicle Name" />
+                    </td>
+                    <td style="display:none" id="td3">
+                        <input type="text" id="txtSlot" value="Enter Slot Size" />
+                    </td>
+                    <td style="display:none" id="td4">
+                        <input type="button" id="btnAddVCat" value="Add" />
                     </td>
                 </tr>
             </table>
@@ -67,10 +91,10 @@
                 <img src="~/Images/SG.jpg" id="imgSG" />
             </td>
             <td>
-                <input type="button"style="color:green" id="btnAddVechicle" value="Add To Parking" />
+                <input type="button"style="color:green;height:30px;" id="btnAddVechicle" value="Add To Parking" />
             </td>
             <td>
-                <input type="button"style="color:red" id="btnRemoveVechicle"value="Remove From Parking" />
+                <input type="button"style="color:red;height:30px;" id="btnRemoveVechicle"value="Remove From Parking" />
             </td>
         </tr>
     </table>

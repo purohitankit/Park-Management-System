@@ -89,5 +89,26 @@ namespace ParkManagementSysDAL
 
             return res;
         }
+
+        public int AddVechiclesCategory(string VechicleType, string VechicleName, int SlotSize)
+        {
+            int res;
+            SqlParameter sqlParameter = new SqlParameter("@VechicleType", VechicleType);
+            SqlParameter sqlParameter1 = new SqlParameter("@VechicleName", VechicleName);
+            SqlParameter sqlParameter2 = new SqlParameter("@SlotSize", SlotSize);
+            using (SqlConnection sqlConnection = new SqlConnection(ConnestionString))
+            {
+                sqlConnection.Open();
+                SqlCommand scommand = new SqlCommand("AddDataToAuditVechicle", sqlConnection);
+                scommand.CommandType = CommandType.StoredProcedure;
+                scommand.Parameters.Add(sqlParameter);
+                scommand.Parameters.Add(sqlParameter1);
+                scommand.Parameters.Add(sqlParameter2);
+                res = Convert.ToInt16(scommand.ExecuteNonQuery());
+            }           
+
+            return res;
+
+        }
     }
 }

@@ -34,6 +34,14 @@ namespace ParkingManagement.Controllers
                 AvailCnt=AvailCnt
             };
             return Json(jsonObj, JsonRequestBehavior.AllowGet);
-        }        
+        }
+
+        [HttpPost]
+        [Route("Lookup/AddVechiclesCategory")]
+        public ActionResult AddVechiclesCategory(string VechicleType, string VechicleName,int SlotSize)
+        {         
+            string jsonStr = JsonConvert.SerializeObject(ibuisnessLayer.AddVechiclesCategory(VechicleType, VechicleName, SlotSize));            
+            return Json(jsonStr, JsonRequestBehavior.AllowGet);
+        }
     }
 }

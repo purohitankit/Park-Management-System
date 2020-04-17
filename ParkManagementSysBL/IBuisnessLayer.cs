@@ -12,5 +12,6 @@ namespace ParkManagementSysBL
         DataTable GetVechileType();
         DataSet GetVechileName(int VechicleId);
         int AddRemoveVechicles(int VechicleId, string VechicleType, string ActionName,ref int OccpCnt,ref int AvailCnt);
+        int AddVechiclesCategory(string VechicleType, string VechicleName, int SlotSize);
     }
 }

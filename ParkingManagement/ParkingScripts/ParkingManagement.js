@@ -10,7 +10,6 @@
 
     proto.BindDataAndEvents = function () {
         $("#VechicleType").change(function () {
-
             if ($("#VechicleType").val() === "0") {
                 $("#txtOccpCount").val("");
                 $("#txtAvailCount").val("");
@@ -34,7 +33,14 @@
                         }
                         $("#VechicleName").css('border-color', 'red');
                         $("#txtOccpCount").css('border-color', 'red');
-                        $("#txtAvailCount").css('border-color', 'red');
+                        $("#txtAvailCount").css('border-color', 'red');   
+
+                        if ($("#txtOccpCount").val() === "50" || $("#txtOccpCount").val() === "30" || $("#txtOccpCount").val() === "20") {
+                            $("#lblStatus").show();
+                        }
+                        else {
+                            $("#lblStatus").hide();
+                        }   
                     }
                 },
                 error: function (res) {
@@ -48,36 +54,99 @@
 
             if ($("#VechicleType :selected").val() !== "0" && $("#VechicleName :selected").val() !== "0") {
 
-                $.ajax({
-                    url: options.AddRemoveVechiclesURL + "?VechicleId=" + $("#VechicleType :selected").val() + "&VechicleType="+$("#VechicleType :selected").text()+"&ActionName=Add",
-                    type: "POST",
-                    dataType: "JSON",
-                    contentType: "application/json;charset=utf-8",
-                    success: function (res, status) {                                                                                                               
-                        if (res.res === "1") {
-                            alert("Vechicle Added To " + $("#VechicleType :selected").text() + " Parking Slot");
-
-                            $("#txtOccpCount").val(res.OccupCnt);
-                            $("#txtAvailCount").val(res.AvailCnt);
-
-                            $("#txtOccpCount").css('border-color', 'red');
-                            $("#txtAvailCount").css('border-color', 'red');
-                        }
-                    },
-                    error: function (res) {
-                        alert("Error Occured");
-                    }
-                });
+                AddRemoveVechiles("Add");
 
             }
             else {
                 alert("Please Select Vechicle Type And Vechicle Name");
             }
+        });
+
+        $("#btnRemoveVechicle").click(function () {
+
+            if ($("#VechicleType :selected").val() !== "0" && $("#VechicleName :selected").val() !== "0") {
+
+                AddRemoveVechiles("Remove");
+
+            }
+            else {
+                alert("Please Select Vechicle Type And Vechicle Name");
+            }
+        });
+
+        $("#tdCat").click(function () {
+
+            $("#td1").show();
+            $("#td2").show();
+            $("#td3").show();
+            $("#td4").show();
 
         });
 
-        $("#btnAddVechicle").click(function () { });
+        $("#btnAddVCat").click(function () {
+
+            $.ajax({
+                url: options.AddVechiclesCategoryURL + "?VechicleType=" + $("#txtVCat").val() + "&VechicleName=" + $("#txtVName").val() + "&SlotSize=" + $("#txtSlot").val(),
+                type: "POST",
+                dataType: "JSON",
+                contentType: "application/json;charset=utf-8",
+                success: function (res, status) {
+                    if (status === "success") {
+                        alert("Categoty Added Sucessfuly");
+                        $("#td1").hide();
+                        $("#td2").hide();
+                        $("#td3").hide();
+                        $("#td4").hide();
+
+                        window.location.href = options.VechicleURL;
+                    }
+                },
+                error: function (res) {
+                    alert("Error Occured");
+                }
+            });
+
+        });
     };
+
+    function AddRemoveVechiles(ActionName) {
+
+        $.ajax({
+            url: options.AddRemoveVechiclesURL + "?VechicleId=" + $("#VechicleType :selected").val() + "&VechicleType=" + $("#VechicleType :selected").text() + "&ActionName=" + ActionName,
+            type: "POST",
+            dataType: "JSON",
+            contentType: "application/json;charset=utf-8",
+            success: function (res, status) {
+                if (status === "success") {
+                    
+                    var VId = $("#txtOccpCount").val() === "50" ? 2 : $("#txtOccpCount").val() === "30" ? 3 : 1;
+                    alert("Vechicle " + ActionName + "ed To Parking Slot");
+
+                    $("#txtOccpCount").val(res.OccupCnt);
+                    $("#txtAvailCount").val(res.AvailCnt);
+
+                    if (ActionName === "Add") {
+                        $("#VechicleType option[value=" + VId + "]").prop('selected', true);
+
+                        $("#VechicleType").trigger("change");
+                    }                   
+                    $("#txtOccpCount").css('border-color', 'red');
+                    $("#txtAvailCount").css('border-color', 'red');
+
+                    if ($("#txtOccpCount").val() === "50" || $("#txtOccpCount").val() === "30" || $("#txtOccpCount").val() === "20") {
+                        $("#lblStatus").show();
+                    }
+                    else {
+                        $("#lblStatus").hide();
+                    }
+                }
+            },
+            error: function (res) {
+                alert("Error Occured");
+            }
+        });
+
+    }
 
 })(ParkingMang);
 
