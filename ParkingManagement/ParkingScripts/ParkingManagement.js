@@ -119,17 +119,19 @@
             success: function (res, status) {
                 if (status === "success") {
                     
-                    var VId = $("#txtOccpCount").val() === "50" ? 2 : $("#txtOccpCount").val() === "30" ? 3 : 1;
+                    var VId = $("#txtOccpCount").val() === "50" ? 2 : $("#txtOccpCount").val() === "30" ? 3 : 1;                    
                     alert("Vechicle " + ActionName + "ed To Parking Slot");
 
                     $("#txtOccpCount").val(res.OccupCnt);
                     $("#txtAvailCount").val(res.AvailCnt);
 
-                    if (ActionName === "Add") {
-                        $("#VechicleType option[value=" + VId + "]").prop('selected', true);
+                   
 
-                        $("#VechicleType").trigger("change");
-                    }                   
+                    //if (ActionName === "Add" ) {
+                    //    $("#VechicleType option[value=" + VId + "]").prop('selected', true);
+
+                    //    $("#VechicleType").trigger("change");
+                    //}                   
                     $("#txtOccpCount").css('border-color', 'red');
                     $("#txtAvailCount").css('border-color', 'red');
 
