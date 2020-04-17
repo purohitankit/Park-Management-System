@@ -10,6 +10,7 @@ namespace ParkManagementSysDAL
     interface IDataAccessLayer
     {
         DataTable GetVechileType();
-        DataTable GetVechileName(int VechicleId);        
+        DataSet GetVechileName(int VechicleId);
+        int AddRemoveVechicles(int VechicleId, string VechicleType, string ActionName, ref int OccpCnt, ref int AvailCnt);
     }
 }

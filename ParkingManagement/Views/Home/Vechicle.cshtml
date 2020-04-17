@@ -13,6 +13,7 @@
         $.ParkingMang.ParkingManagement = {};
         var options = {};
         options.GetVechileNamesURL = '@Url.Action("GetVechileNames", "Lookup")';
+        options.AddRemoveVechiclesURL = '@Url.Action("AddRemoveVechicles", "Lookup")';
         
         var obj = new ParkingMang.ParkingManagement(options);   
         obj.BindDataAndEvents();
@@ -25,24 +26,25 @@
     <title>Park Management System</title>
 </head>
 <body>
+    <header style="text-align:center;font-size:30px">Parking Management System</header>
         <div>           
-            <table align="center" style="margin-top:30px">
+            <table align="center" style="margin-top:70px">
                 <tr>
                     <td>
                         <h1>Parking Status :</h1> 
                     </td>
                     <td>
-                        Occupied Count : &nbsp; <span>@Model.VOccupiedCount</span>
+                        Occupied Count : &nbsp; <span><input type="text" style="width:40px;height:25px;text-align:center;" disabled id="txtOccpCount" /> </span>
                     </td>
                     <td>
-                        Available Count : &nbsp; <span>@Model.VAvailableCount</span>
+                        Available Count : &nbsp; <span><input type="text" style="width:40px;height:25px;text-align:center;" disabled id="txtAvailCount" /></span>
 
                     </td>
                 </tr>
             </table>
         </div>
         <div>
-            <table style="margin-top:50px" width="35%">
+            <table style="margin-top:70px" width="35%">
                 <tr>
                     <td>
                         Vechicle Type :
@@ -59,5 +61,18 @@
                 </tr>
             </table>
         </div>
+    <table align="center" style="margin-top:70px">
+        <tr>
+            <td>
+                <img src="~/Images/SG.jpg" id="imgSG" />
+            </td>
+            <td>
+                <input type="button"style="color:green" id="btnAddVechicle" value="Add To Parking" />
+            </td>
+            <td>
+                <input type="button"style="color:red" id="btnRemoveVechicle"value="Remove From Parking" />
+            </td>
+        </tr>
+    </table>
 </body>
 </html>

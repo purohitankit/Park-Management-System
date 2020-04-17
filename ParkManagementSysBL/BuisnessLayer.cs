@@ -14,9 +14,13 @@ namespace ParkManagementSysBL
         {
             return idataccesslayer.GetVechileType();   
         }
-        public DataTable GetVechileName(int VechicleId)
+        public DataSet GetVechileName(int VechicleId)
         {
             return idataccesslayer.GetVechileName(VechicleId);
-        }        
+        }
+        public int AddRemoveVechicles(int VechicleId, string VechicleType, string ActionName, ref int OccpCnt, ref int AvailCnt)
+        {
+            return idataccesslayer.AddRemoveVechicles(VechicleId,VechicleType, ActionName,ref OccpCnt,ref AvailCnt);
+        }       
     }
 }

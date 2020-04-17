@@ -17,7 +17,7 @@ namespace ParkingManagement.Controllers
             Vechicle vechicle = new Vechicle()
             {
                 lstVechicleType = ibuisnessLayer.GetVechileType().AsDataView(),
-                lstVechicleName= ibuisnessLayer.GetVechileName(0).AsDataView(),
+                lstVechicleName= ibuisnessLayer.GetVechileName(0).Tables[0].AsDataView(),
             };
             DataRow dr = vechicle.lstVechicleType.Table.NewRow();
             dr["VId"] = 0;
